@@ -1,4 +1,4 @@
-# Alucard
+# Rhyolite
 
 ![Rhyolite](./assets/image.png)
 
