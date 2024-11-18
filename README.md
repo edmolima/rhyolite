@@ -4,7 +4,7 @@
 
 ## Team
 
-This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/rio/graphs/contributors).
+This tool is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/rio/graphs/contributors).
 
 | [![Edmo Lima](https://github.com/edmolima.png?size=100)](https://github.com/edmolima) |
 | ------------------------------------------------------------------------------------- |
