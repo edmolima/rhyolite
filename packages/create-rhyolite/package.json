@@ -1,0 +1,41 @@
+{
+  "name": "create-rhyolite",
+  "version": "0.2.0",
+  "description": "Rhyolite Project Scaffolder",
+  "main": "dist/index.js",
+  "bin": {
+    "create-rhyolite": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write src",
+    "test": "echo 'No tests yet'",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "cli",
+    "typescript",
+    "monorepo",
+    "scaffold",
+    "create"
+  ],
+  "author": "Edmo Lima <soedmolima@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edmolima/rhyolite"
+  },
+  "homepage": "https://github.com/edmolima/rhyolite/tree/main/packages/create-rhyolite#readme",
+  "bugs": {
+    "url": "https://github.com/edmolima/rhyolite/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "dependencies": {
+    "@rhyolite/core": "workspace:*"
+  }
+}
