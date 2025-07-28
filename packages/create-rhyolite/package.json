@@ -1,6 +1,6 @@
 {
   "name": "create-rhyolite",
-  "version": "0.2.0",
+  "version": "0.2.4",
   "description": "Rhyolite Project Scaffolder",
   "main": "dist/index.js",
   "bin": {
