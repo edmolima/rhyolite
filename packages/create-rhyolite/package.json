@@ -1,6 +1,6 @@
 {
   "name": "create-rhyolite",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Rhyolite Project Scaffolder",
   "main": "dist/index.js",
   "bin": {
@@ -36,12 +36,15 @@
     "README.md"
   ],
   "devDependencies": {
-    "typescript": "^5.0.0",
     "@types/node": "^20.0.0",
-    "@rhyolite/core": "workspace:*",
-    "tsdown": "^0.13.0"
+    "tsdown": "^0.13.0",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "@rhyolite/core": "workspace:*"
   }
 }

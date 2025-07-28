@@ -1,25 +1,29 @@
 #!/usr/bin/env node
 
-import { hello } from '@rhyolite/core';
+import cac from 'cac';
+import { scaffoldPlugin, scaffoldTheme } from './scaffold';
 
-// CLI command parsing
-const args = process.argv.slice(2);
-const name = args[0];
-const hasDoubleDash = args[1] === '--';
-const flagIndex = hasDoubleDash ? 2 : 1;
-const flag = args[flagIndex];
+const cli = cac('create-rhyolite');
 
-hello(' rhyolite');
+cli
+  .command('[name]', 'Create a new Rhyolite project')
+  .option('--plugin <type>', 'Scaffold a plugin')
+  .option('--theme <type>', 'Scaffold a theme')
+  .action((name: string | undefined, options: { plugin?: string; theme?: string }) => {
+    if (!name) {
+      console.log('Error: Project name is required.');
+      cli.outputHelp();
+      process.exit(1);
+    }
+    if (options.plugin) {
+      scaffoldPlugin({ name, type: options.plugin });
+    } else if (options.theme) {
+      scaffoldTheme({ name, type: options.theme });
+    } else {
+      cli.outputHelp();
+      process.exit(1);
+    }
+  });
 
-if (flag === '--plugin') {
-  // In the future, call core logic to scaffold a plugin
-  // eslint-disable-next-line no-console
-  console.log('plugin created');
-} else if (flag === '--theme') {
-  // In the future, call core logic to scaffold a theme
-  // eslint-disable-next-line no-console
-  console.log('theme created');
-} else {
-  // eslint-disable-next-line no-console
-  console.log('Usage: npm create rhyolite@latest <name> -- --plugin <type> | --theme <type>');
-}
+cli.help();
+cli.parse();

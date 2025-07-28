@@ -23,10 +23,21 @@ jobs:
           corepack enable
           pnpm install --no-frozen-lockfile || npm ci || yarn install --frozen-lockfile
 
-      # Build all packages in dependency order (core first, then cli)
-      - name: Build all packages (TypeScript project references)
+      # Build all packages (using tsdown, same as local scripts)
+      - name: Build all packages (tsdown)
         run: |
-          pnpm exec tsc -b
+          pnpm build
+
+      # Check if dist/index.js exists in the CLI package
+      - name: Check CLI dist output
+        run: |
+          ls -l packages/create-rhyolite/dist/
+
+      # Check if dist/index.js is present in the published package
+      - name: Check CLI package contents
+        run: |
+          pnpm --filter create-rhyolite pack
+          tar -tf packages/create-rhyolite/create-rhyolite-*.tgz | grep dist/index.js
 
       # Publish create-rhyolite package to npm (for npm create rhyolite@latest)
       - name: Publish create-rhyolite package to npm
