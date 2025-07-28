@@ -1,13 +1,15 @@
 
-# @rhyolite/cli
 
-Rhyolite CLI
+# create-rhyolite
+
+Rhyolite Project Scaffolder
 
 ## About
 
-This package is the CLI for the Rhyolite monorepo. All command parsing and CLI logic lives here. The core package only provides business rules and utilities.
+This package is the official project scaffolder for the Rhyolite monorepo. All command parsing and CLI logic lives here. The core package only provides business rules and utilities.
 
 ## Usage
+
 
 ### Create a plugin or theme
 
@@ -27,12 +29,13 @@ node dist/index.js my-plugin -- --plugin typescript-plugin
 node dist/index.js my-theme -- --theme typescript-theme
 ```
 
+
 Or install globally:
 
 ```sh
 pnpm build
 pnpm link --global
-rhyolite my-plugin -- --plugin typescript-plugin
+create-rhyolite my-plugin -- --plugin typescript-plugin
 ```
 
 ## Scripts

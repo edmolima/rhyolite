@@ -1,10 +1,10 @@
 {
-  "name": "@rhyolite/cli",
+  "name": "create-rhyolite",
   "version": "0.2.0",
   "description": "Rhyolite CLI",
   "main": "dist/index.js",
   "bin": {
-    "rhyolite": "dist/index.js"
+    "create-rhyolite": "dist/index.js"
   },
   "scripts": {
     "build": "tsc -b",
