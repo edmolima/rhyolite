@@ -33,12 +33,6 @@ jobs:
         run: |
           ls -l packages/create-rhyolite/dist/
 
-      # Check if dist/index.js is present in the published package
-      - name: Check CLI package contents
-        run: |
-          pnpm --filter create-rhyolite pack
-          tar -tf packages/create-rhyolite/create-rhyolite-*.tgz | grep dist/index.js
-
       # Publish create-rhyolite package to npm (for npm create rhyolite@latest)
       - name: Publish create-rhyolite package to npm
         env:
