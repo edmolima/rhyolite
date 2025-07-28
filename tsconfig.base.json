@@ -4,10 +4,6 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "@rhyolite/core": ["packages/core/dist"],
-      "@rhyolite/core/*": ["packages/core/dist/*"]
-    },
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

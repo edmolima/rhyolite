@@ -42,3 +42,8 @@ coverage
 
 # Build output
 dist/
+
+# TypeScript build info
+*.tsbuildinfo
+
+tsconfig.tsbuildinfo
