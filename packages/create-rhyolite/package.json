@@ -7,7 +7,7 @@
     "create-rhyolite": "dist/index.js"
   },
   "scripts": {
-    "build": "tsdown src/index.ts --format cjs --target node18 --out-dir dist --clean --dts",
+    "build": "tsdown src/index.ts",
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src",
