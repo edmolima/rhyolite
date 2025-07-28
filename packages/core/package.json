@@ -1,0 +1,34 @@
+{
+  "name": "@rhyolite/core",
+  "version": "0.1.0",
+  "description": "Rhyolite Core Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write src",
+    "test": "echo 'No tests yet'"
+  },
+  "keywords": [
+    "core",
+    "library",
+    "typescript",
+    "monorepo"
+  ],
+  "author": "Edmo Lima <soedmolima@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edmolima/rhyolite"
+  },
+  "homepage": "https://github.com/edmolima/rhyolite/tree/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/edmolima/rhyolite/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

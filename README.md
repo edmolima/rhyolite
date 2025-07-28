@@ -8,7 +8,6 @@ Creating next generation obsidian plugins and themes.
   - [About](#about)
   - [Getting Started](#getting-started)
   - [Usage](#usage)
-  - [Environment Variables](#environment-variables)
   - [Contributing](#contributing)
   - [Changelog](#changelog)
   - [CI/CD: Publishing to npm](#cicd-publishing-to-npm)
@@ -16,9 +15,16 @@ Creating next generation obsidian plugins and themes.
   - [Funding](#funding)
   - [License](#license)
 
+rhyolite is a modern project designed for reliability and maintainability.
+
 ## About
 
-rhyolite is a modern project designed for reliability and maintainability.
+rhyolite is a modern monorepo where **each package is fully independent**. Every package has its own `package.json`, `tsconfig.json`, scripts, dependencies, and build process. The root only manages workspace-wide tooling and utilities.
+
+**Best practices:**
+- Add new packages in `packages/` with their own configs and dependencies
+- Use `pnpm` for workspace management, but keep each package self-contained
+- Lint, format, and test can be run per package or from the root using workspace scripts
 
 ## Getting Started
 
@@ -26,14 +32,10 @@ rhyolite is a modern project designed for reliability and maintainability.
 2. Install dependencies with your preferred package manager (e.g., pnpm, npm, yarn)
 3. Start building!
 
-
 ## Usage
 
 Add usage instructions here.
 
-## Environment Variables
-
-See [.env.example](.env.example) for required environment variables and usage.
 
 ## Contributing
 
