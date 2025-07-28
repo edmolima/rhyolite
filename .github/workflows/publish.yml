@@ -28,9 +28,9 @@ jobs:
         run: |
           pnpm exec tsc -b
 
-      # Publish CLI package to npm (always after fresh build)
-      - name: Publish CLI package to npm
+      # Publish create-rhyolite package to npm (for npm create rhyolite@latest)
+      - name: Publish create-rhyolite package to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm --filter @rhyolite/cli publish --access public --no-git-checks
+          pnpm --filter create-rhyolite publish --access public --no-git-checks
