@@ -4,7 +4,7 @@ export default {
   target: 'node20',
   minify: true,
   outDir: 'dist',
-  format: 'esm',
+  format: 'cjs', // CommonJS for CLI compatibility
   bundle: true,
   splitting: false,
   clean: true,
