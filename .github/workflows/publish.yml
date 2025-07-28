@@ -24,14 +24,9 @@ jobs:
           pnpm install --no-frozen-lockfile || npm ci || yarn install --frozen-lockfile
 
       # Build all packages in dependency order (core first, then cli)
-      - name: Build all packages (dependency order)
+      - name: Build all packages (TypeScript project references)
         run: |
-          pnpm -r build
-
-      # Ensure CLI is built with the latest core
-      - name: Build CLI package (guarantee latest core)
-        run: |
-          pnpm --filter @rhyolite/cli build
+          pnpm exec tsc -b
 
       # Publish CLI package to npm (always after fresh build)
       - name: Publish CLI package to npm
