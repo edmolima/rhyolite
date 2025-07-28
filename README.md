@@ -1,6 +1,6 @@
 # rhyolite
 
-A professional, robust project.
+Creating next generation obsidian plugins and themes.
 
 ## Table of Contents
 - [rhyolite](#rhyolite)
@@ -11,6 +11,7 @@ A professional, robust project.
   - [Environment Variables](#environment-variables)
   - [Contributing](#contributing)
   - [Changelog](#changelog)
+  - [CI/CD: Publishing to npm](#cicd-publishing-to-npm)
   - [Security](#security)
   - [Funding](#funding)
   - [License](#license)
@@ -41,6 +42,18 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+
+## CI/CD: Publishing to npm
+
+This project uses GitHub Actions to automatically publish to npm when a new version tag is pushed.
+
+**To enable publishing:**
+- Go to your repository on GitHub
+- Click on Settings > Secrets and variables > Actions
+- Add a new secret named `NPM_TOKEN` with your npm access token
+
+The workflow is defined in [.github/workflows/publish.yml](.github/workflows/publish.yml).
 
 ## Security
 
