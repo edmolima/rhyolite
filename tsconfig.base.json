@@ -5,8 +5,8 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@rhyolite/core": ["packages/core/src"],
-      "@rhyolite/core/*": ["packages/core/src/*"]
+      "@rhyolite/core": ["packages/core/dist"],
+      "@rhyolite/core/*": ["packages/core/dist/*"]
     },
     "strict": true,
     "esModuleInterop": true,
