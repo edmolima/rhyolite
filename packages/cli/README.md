@@ -1,44 +1,57 @@
+
 # @rhyolite/cli
 
 Rhyolite CLI
 
-## Sobre
+## About
 
-Este pacote é o CLI do monorepo Rhyolite. Ele utiliza o core para executar comandos e pode ser usado via linha de comando.
+This package is the CLI for the Rhyolite monorepo. All command parsing and CLI logic lives here. The core package only provides business rules and utilities.
 
-## Como usar
+## Usage
 
-Após build, rode:
+### Create a plugin or theme
 
 ```sh
-npx rhyolite [nome]
+npm create rhyolite@latest my-plugin -- --plugin typescript-plugin
+npm create rhyolite@latest my-theme -- --theme typescript-theme
 ```
 
-Ou instale globalmente:
+The CLI will print:
+- `plugin created` for plugins
+- `theme created` for themes
+
+### Local execution (after build)
+
+```sh
+node dist/index.js my-plugin -- --plugin typescript-plugin
+node dist/index.js my-theme -- --theme typescript-theme
+```
+
+Or install globally:
 
 ```sh
 pnpm build
 pnpm link --global
-rhyolite [nome]
+rhyolite my-plugin -- --plugin typescript-plugin
 ```
 
 ## Scripts
 
-- `pnpm build` — Compila o CLI para dist/
-- `pnpm lint` — Lint nos arquivos TypeScript
-- `pnpm format` — Formata o código
-- `pnpm test` — Testes (placeholder)
-- `pnpm clean` — Remove dist/
+- `pnpm build` — Compiles the CLI to dist/
+- `pnpm lint` — Lints TypeScript files
+- `pnpm format` — Formats the code
+- `pnpm test` — Tests (placeholder)
+- `pnpm clean` — Removes dist/
 
-## Desenvolvimento
+## Development
 
-- Edite o código em `src/`
-- Rode `pnpm build` para compilar
-- Rode `pnpm lint` e `pnpm format` para manter o padrão
+- Edit code in `src/`
+- Run `pnpm build` to compile
+- Run `pnpm lint` and `pnpm format` to keep code style
 
-## Dependências
+## Dependencies
 
-- Usa o pacote `@rhyolite/core` do monorepo
+- Uses the `@rhyolite/core` package from the monorepo
 
 ## License
 

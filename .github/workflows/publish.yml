@@ -23,12 +23,19 @@ jobs:
           corepack enable
           pnpm install --no-frozen-lockfile || npm ci || yarn install --frozen-lockfile
 
-      - name: Build
+      # Build all packages in dependency order (core first, then cli)
+      - name: Build all packages (dependency order)
         run: |
-          if [ -f package.json ] && grep -q 'build' package.json; then pnpm build || npm run build || yarn build; fi
+          pnpm -r build
 
-      - name: Publish to npm
+      # Ensure CLI is built with the latest core
+      - name: Build CLI package (guarantee latest core)
+        run: |
+          pnpm --filter @rhyolite/cli build
+
+      # Publish CLI package to npm (always after fresh build)
+      - name: Publish CLI package to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm publish --access public || npm publish --access public || yarn publish --access public
+          pnpm --filter @rhyolite/cli publish --access public --no-git-checks
