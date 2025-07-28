@@ -2,6 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@rhyolite/core": ["packages/core/src"],
+      "@rhyolite/core/*": ["packages/core/src/*"]
+    },
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
