@@ -1,6 +1,6 @@
 {
   "name": "create-rhyolite",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Rhyolite Project Scaffolder",
   "main": "dist/index.js",
   "bin": {
@@ -44,7 +44,6 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "cac": "^6.7.14",
-    "@rhyolite/core": "workspace:*"
+    "cac": "^6.7.14"
   }
 }

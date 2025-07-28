@@ -2,7 +2,7 @@
  * Core scaffolding logic for Rhyolite plugins and themes.
  */
 
-import { ScaffoldOptions, logInfo } from '@rhyolite/core';
+import { ScaffoldOptions, logInfo } from './core';
 
 export function scaffoldPlugin(options: ScaffoldOptions) {
   // TODO: Implement actual plugin scaffolding logic
