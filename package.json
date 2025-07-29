@@ -1,6 +1,6 @@
 {
   "name": "rhyolite",
-  "version": "0.2.11",
+  "version": "0.3.0",
   "description": "Creating next generation obsidian plugins and themes.",
   "main": "index.js",
   "repository": {
@@ -12,11 +12,12 @@
     "url": "https://github.com/edmolima/rhyolite/issues"
   },
   "scripts": {
-    "build": "pnpm -r run build",
-    "clean": "rimraf ./packages/*/dist",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
-    "format": "prettier --write .",
-    "test": "pnpm -r run test || echo 'No tests defined'",
+    "build": "pnpm --filter create-rhyolite run build",
+    "clean": "rimraf ./packages/create-rhyolite/dist",
+    "lint": "pnpm --filter create-rhyolite exec eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "pnpm --filter create-rhyolite exec eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "pnpm --filter create-rhyolite exec prettier --write .",
+    "test": "pnpm --filter create-rhyolite run test || echo 'No tests defined'",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
@@ -29,7 +30,7 @@
   "author": "Edmo Lima <soedmolima@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
   },
   "funding": {
@@ -37,12 +38,14 @@
     "url": "https://github.com/sponsors/edmolima"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@eslint/js": "^9.32.0",
+    "@types/node": "^24.1.0",
     "eslint": "^9.32.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "tsdown": "^0.13.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
   },
   "packageManager": "pnpm@10.13.1"
 }

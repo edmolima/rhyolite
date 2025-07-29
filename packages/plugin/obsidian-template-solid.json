@@ -1,0 +1,6 @@
+{
+  "name": "solid",
+  "description": "Official Solid plugin template for Obsidian.",
+  "repo": "https://github.com/edmolima/obsidian-plugin-solid",
+  "args": "obsidian-template-solid"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "sample",
+  "description": "Official Sample theme template for Obsidian.",
+  "repo": "https://github.com/obsidianmd/obsidian-sample-theme",
+  "args": "obsidian-sample-theme"
+}

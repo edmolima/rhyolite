@@ -1,0 +1,6 @@
+{
+  "name": "react",
+  "description": "Official React plugin template for Obsidian.",
+  "repo": "https://github.com/obsidianmd/obsidian-sample-plugin",
+  "args": "obsidian-template-react"
+}

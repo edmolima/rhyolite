@@ -1,0 +1,6 @@
+{
+  "name": "svelte",
+  "description": "Official Svelte theme template for Obsidian.",
+  "repo": "https://github.com/edmolima/obsidian-theme-svelte",
+  "args": "obsidian-template-svelte"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "vue",
+  "description": "Official Vue plugin template for Obsidian.",
+  "repo": "https://github.com/edmolima/obsidian-plugin-vue",
+  "args": "obsidian-template-vue"
+}

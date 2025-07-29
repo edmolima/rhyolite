@@ -1,0 +1,6 @@
+{
+  "name": "react",
+  "description": "Official React theme template for Obsidian.",
+  "repo": "https://github.com/edmolima/obsidian-theme-react",
+  "args": "obsidian-template-react"
+}
