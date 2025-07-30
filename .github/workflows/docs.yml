@@ -1,22 +1,35 @@
-name: Deploy Docs
+name: Deploy Astro blog to GitHub Pages
 
 on:
+  # Trigger the workflow every time you push a tag (e.g., v1.0.0)
   push:
     tags:
       - 'v*'
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
         with:
-          version: 8
-      - run: pnpm install
-      - run: pnpm --filter docs run build
+          fetch-depth: 0 # Only a single commit is fetched by default, for the ref/SHA that triggered the workflow. Set fetch-depth: 0 to fetch all history for all branches and tags
+      - name: Install, build, and upload your site
+        uses: withastro/action@v1
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/dist
+        id: deployment
+        uses: actions/deploy-pages@v1
