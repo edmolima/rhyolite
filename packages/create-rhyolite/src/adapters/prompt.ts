@@ -1,12 +1,13 @@
-import chalk from 'chalk';
 import inquirer from 'inquirer';
+import chalk from 'chalk';
 import fuzzysort from 'fuzzysort';
-import { execSync } from 'child_process';
 import { discoverTemplates } from '../core/template-discovery';
-import { validateProjectName } from './validateName';
-import { getBadges } from './badges';
-import { previewRepo } from './preview';
-
+import { validateProjectName } from '../utils/validateName';
+import { getBadges } from '../utils/badges';
+import { previewRepo } from './preview.js';
+/**
+ * Answers returned from the project creation prompt.
+ */
 export interface ProjectPromptAnswers {
   name: string;
   type: 'plugin' | 'theme';
@@ -14,6 +15,10 @@ export interface ProjectPromptAnswers {
   preview?: boolean;
 }
 
+/**
+ * Prompts the user for project information (name, type, template, preview).
+ * @returns {Promise<ProjectPromptAnswers>} The user's answers.
+ */
 export async function askProjectInfo(): Promise<ProjectPromptAnswers> {
   await validateEnvironment();
   const questions = [
@@ -28,7 +33,7 @@ export async function askProjectInfo(): Promise<ProjectPromptAnswers> {
       name: 'type',
       message: chalk.cyan.bold('What do you want to create?'),
       choices: [
-        { name: chalk.magenta('🧩 Plugin'), value: 'plugin' },
+        { name: chalk.magenta('🛩️ Plugin'), value: 'plugin' },
         { name: chalk.blue('🎨 Theme'), value: 'theme' },
       ],
     },
@@ -41,7 +46,7 @@ export async function askProjectInfo(): Promise<ProjectPromptAnswers> {
           : chalk.blue.bold('Type to search for a theme template:'),
       source: async (_answers: unknown, input: string | undefined) => {
         const type = (_answers as ProjectPromptAnswers).type;
-        const templates = discoverTemplates(type);
+        const templates = discoverTemplates();
         const choices = templates.map((json) => ({
           name:
             getBadges({
@@ -49,7 +54,7 @@ export async function askProjectInfo(): Promise<ProjectPromptAnswers> {
               community: json.community ?? false,
               popular: json.popular ?? false,
             }) +
-            (type === 'plugin' ? chalk.magenta('🧩') : chalk.blue('🎨')) +
+            (type === 'plugin' ? chalk.magenta('🛩️') : chalk.blue('🎨')) +
             ' ' +
             chalk.bold(json.name) +
             chalk.gray(` (${json.args})`) +
@@ -81,56 +86,17 @@ export async function askProjectInfo(): Promise<ProjectPromptAnswers> {
   const answers = (await inquirer.prompt(questions)) as ProjectPromptAnswers;
 
   if (answers.preview) {
-    const type = answers.type;
-    const templates = discoverTemplates(type);
+    const templates = discoverTemplates();
     const selected = templates.find((t) => t.args === answers.template);
     if (selected) previewRepo(selected.repo);
   }
   return answers;
 }
 
-export function printSuccess(name: string, type: string) {
-  console.log(chalk.greenBright.bold('\n✔ Success!'));
-  console.log(chalk.cyanBright(`\nYour ${type} '${name}' was created.`));
-  console.log(chalk.yellowBright('\nNext steps:'));
-  console.log(chalk.bold(`  cd ${name}`));
-  console.log(chalk.bold('  pnpm install'));
-  console.log(chalk.bold('  pnpm dev'));
-  console.log(
-    chalk.gray('\nNeed help? See the docs: https://github.com/edmolima/rhyolite#readme\n'),
-  );
-}
-
-export function printError(message: string, suggestion?: string) {
-  console.log(chalk.redBright.bold('\n✖ Error: ') + chalk.red(message));
-  if (suggestion) {
-    console.log(chalk.yellowBright('Suggestion: ') + chalk.yellow(suggestion));
-  }
-  console.log(
-    chalk.gray('If you need help, open an issue: https://github.com/edmolima/rhyolite/issues\n'),
-  );
-}
-
-export async function validateEnvironment() {
-  try {
-    execSync('node --version', { stdio: 'ignore' });
-  } catch {
-    printError(
-      'Node.js is not installed or not in PATH.',
-      'Install Node.js from https://nodejs.org/',
-    );
-    process.exit(1);
-  }
-  try {
-    execSync('pnpm --version', { stdio: 'ignore' });
-  } catch {
-    printError('pnpm is not installed or not in PATH.', 'Install pnpm: npm install -g pnpm');
-    process.exit(1);
-  }
-  try {
-    execSync('git --version', { stdio: 'ignore' });
-  } catch {
-    printError('git is not installed or not in PATH.', 'Install git: https://git-scm.com/');
-    process.exit(1);
-  }
+/**
+ * Validates the environment for project creation.
+ * @returns {Promise<true>} Always returns true (placeholder for real validation).
+ */
+export async function validateEnvironment(): Promise<true> {
+  return true;
 }

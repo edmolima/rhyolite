@@ -1,63 +1,30 @@
-import { createSpinner } from '../utils/spinner';
-import path from 'path';
-import fs from 'fs';
-import { execSync } from 'child_process';
-import { resolveTemplate } from '../core/template-resolver';
-import { discoverCommunityTemplates } from '../core/community-discovery';
+import { CreateOptions } from '../types.js';
+import { resolveTemplate } from '../core/template-resolver.js';
+import { discoverCommunityTemplates } from '../core/community-discovery.js';
+import { createProject } from '../adapters/project.js';
 
-export interface CreateOptions {
-  plugin?: string;
-  theme?: string;
-}
-
-export async function runCreate(name: string, options: CreateOptions) {
+/**
+ * Handles the creation of a new project from a template.
+ * @param name - The project name.
+ * @param options - The creation options (plugin or theme).
+ * @throws If no template is found or options are invalid.
+ */
+export async function createHandler(name: string, options: CreateOptions): Promise<void> {
   if (!options.plugin && !options.theme) {
-    console.error('Please specify --plugin or --theme with a template name.');
-    process.exit(1);
+    throw new Error('Please specify --plugin or --theme with a template name.');
   }
-
   const type = options.plugin ? 'plugin' : 'theme';
   const argValue = options.plugin || options.theme || '';
-  // possibleArgs is not used, so removed to fix lint error
-  const spinner = createSpinner(`Downloading ${type} template '${argValue}'...`);
 
-  try {
-    // Try official templates first
-    let template = resolveTemplate(argValue, type);
-    // If not found, try community templates
-    if (!template) {
-      const communityTemplates = discoverCommunityTemplates(type);
-      template = communityTemplates.find((t) =>
-        [argValue, `obsidian-template-${argValue}`].includes(t.args),
-      );
-    }
-    if (!template) {
-      spinner.fail(`Template with args '${argValue}' not found.`);
-      process.exit(1);
-    }
-
-    const dest = path.resolve(process.cwd(), name);
-    if (fs.existsSync(dest)) {
-      spinner.fail(`Directory '${name}' already exists.`);
-      process.exit(1);
-    }
-    execSync(`git clone --depth=1 ${template.repo} ${name}`, { stdio: 'ignore' });
-
-    fs.rmSync(path.join(dest, '.git'), { recursive: true, force: true });
-
-    spinner.succeed(
-      `${type[0].toUpperCase() + type.slice(1)} '${name}' created from template '${template.args}'.`,
+  let template = resolveTemplate();
+  if (!template) {
+    const communityTemplates = discoverCommunityTemplates();
+    template = communityTemplates.find(
+      (t) => t.type === type && [argValue, `obsidian-template-${argValue}`].includes(t.args),
     );
-    console.log(`\nNext steps:`);
-    console.log(`  cd ${name}`);
-    console.log(`  pnpm install`);
-    console.log(`  pnpm dev`);
-  } catch (err) {
-    if (err instanceof Error) {
-      spinner.fail(`Failed to create ${type}: ${err.message}`);
-    } else {
-      spinner.fail(`Failed to create ${type}: Unknown error`);
-    }
-    process.exit(1);
   }
+  if (!template) {
+    throw new Error(`Template with args '${argValue}' not found.`);
+  }
+  await createProject(name, template);
 }
