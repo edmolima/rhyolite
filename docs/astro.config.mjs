@@ -6,7 +6,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   // Set the site and base for correct asset URLs on GitHub Pages
   site: 'https://edmolima.github.io/rhyolite/',
-  base: '/rhyolite/docs/',
+  base: '/rhyolite',
   integrations: [
     starlight({
       title: 'My Docs',
