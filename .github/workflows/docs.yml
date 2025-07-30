@@ -1,5 +1,4 @@
-name: Deploy to GitHub Pages
-
+name: Deploy Docs
 on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
@@ -24,11 +23,6 @@ jobs:
         run: pnpm install
       - name: Build Astro docs (pnpm run build:docs)
         run: pnpm run build:docs
-      - name: Install, build, and upload your site output
-        uses: withastro/action@v4
-        with:
-          package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
