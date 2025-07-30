@@ -4,11 +4,11 @@ Thank you for considering contributing to this project!
 
 ## How to Contribute
 
-- Fork the repository
-- Create a new branch for your feature or bugfix
-- Make your changes with clear, descriptive commit messages
-- Ensure all tests pass
-- Submit a pull request with a clear description of your changes
+1. Fork the repository
+2. Create a new branch for your feature or bugfix
+3. Make your changes with clear, descriptive commit messages
+4. Ensure all tests pass (`pnpm test`)
+5. Submit a pull request with a clear description of your changes
 
 ## Code Style
 - Follow the existing code style

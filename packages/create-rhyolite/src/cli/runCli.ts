@@ -1,27 +1,29 @@
 import { Command } from 'commander';
 import { createHandler } from '../commands/create.js';
 import { askProjectInfo } from '../adapters/prompt.js';
+import chalk from 'chalk';
 
 function printBanner() {
-  console.log(`\x1b[36m`);
-  console.log('  _____  _                 _ _ _              ');
-  console.log(' |  __ \\| |               | (_| |             ');
-  console.log(' | |__) | |__  _   _  ___ | |_| |_ ___        ');
-  console.log(" |  _  /| '_ \\| | | |/ _ \\| | | __/ _ \\   ");
-  console.log(' | | \\ \\| | | | |_| | (_) | | | ||  __/      ');
-  console.log(' |_|  \\_\\_| |_|\\__, |\\___/|_|_|\\__\\___| ');
-  console.log('                 __/ |                    ');
-  console.log('                |___/                     ');
-  console.log('');
-  console.log('  ⚡ Create next generation Obsidian plugins and themes ⚡');
-  console.log('\x1b[0m');
+  console.log(
+    chalk.cyanBright(`
+  _____  _                 _ _ _
+ |  __ \\| |               | (_| |
+ | |__) | |__  _   _  ___ | |_| |_ ___
+ |  _  /| '_ \\| | | |/ _ \\| | | __/ _ \\
+ | | \\ \\| | | | |_| | (_) | | | ||  __/
+ |_|  \\_\\_| |_|\\__, |\\___/|_|_|\\__\\___|
+                 __/ |
+                |___/
+`),
+  );
+  console.log(chalk.magentaBright('  ⚡ Create next generation Obsidian plugins and themes ⚡\n'));
 }
 
 export async function runCli() {
   const program = new Command();
   program
     .name('create-rhyolite')
-    .description('CLI for scaffolding Obsidian plugins and themes')
+    .description(chalk.bold('CLI for scaffolding Obsidian plugins and themes'))
     .version('0.1.0')
     .showHelpAfterError()
     .showSuggestionAfterError();
@@ -30,16 +32,16 @@ export async function runCli() {
     .command('create <name>')
     .option('--plugin <template>', 'Create a new plugin from a template')
     .option('--theme <template>', 'Create a new theme from a template')
-    .description('Create a new plugin or theme project')
+    .description(chalk.green('Create a new plugin or theme project'))
     .action(async (name: string, options: { plugin?: string; theme?: string }) => {
       printBanner();
       try {
         await createHandler(name, options);
       } catch (err) {
         if (err instanceof Error) {
-          console.error(`\n\x1b[31mError:\x1b[0m`, err.message);
+          console.error(`\n${chalk.redBright('Error:')}`, chalk.yellow(err.message));
         } else {
-          console.error(`\n\x1b[31mError:\x1b[0m`, err);
+          console.error(`\n${chalk.redBright('Error:')}`, chalk.yellow(String(err)));
         }
         process.exit(1);
       }
@@ -47,7 +49,12 @@ export async function runCli() {
 
   program.addHelpText(
     'after',
-    `\nExamples:\n  pnpm create rhyolite my-plugin -- --plugin react\n  pnpm create rhyolite my-theme -- --theme vue\n  pnpm create rhyolite my-cool-thing -- --plugin my-custom-template\n`,
+    chalk.gray(`
+Examples:
+  pnpm create rhyolite my-plugin -- --plugin react
+  pnpm create rhyolite my-theme -- --theme vue
+  pnpm create rhyolite my-cool-thing -- --plugin my-custom-template
+`),
   );
 
   if (process.argv.length <= 2) {
@@ -55,7 +62,7 @@ export async function runCli() {
     try {
       const answers = await askProjectInfo();
       if (!answers.template) {
-        console.error('No template selected. Exiting.');
+        console.error(chalk.red('No template selected. Exiting.'));
         process.exit(1);
       }
       await createHandler(answers.name, {
@@ -63,9 +70,9 @@ export async function runCli() {
       });
     } catch (err) {
       if (err instanceof Error) {
-        console.error(`\n\x1b[31mError:\x1b[0m`, err.message);
+        console.error(`\n${chalk.redBright('Error:')}`, chalk.yellow(err.message));
       } else {
-        console.error(`\n\x1b[31mError:\x1b[0m`, err);
+        console.error(`\n${chalk.redBright('Error:')}`, chalk.yellow(String(err)));
       }
       process.exit(1);
     }
