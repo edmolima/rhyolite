@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "pnpm --filter create-rhyolite run build",
+    "build:docs": "pnpm run --filter docs build",
     "clean": "rimraf ./packages/create-rhyolite/dist",
     "lint": "pnpm --filter create-rhyolite exec eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "pnpm --filter create-rhyolite exec eslint . --ext .ts,.tsx,.js,.jsx --fix",
