@@ -1,6 +1,7 @@
 import { CreateOptions } from '../types.js';
-import { resolveTemplate } from '../core/template-resolver.js';
-import { discoverCommunityTemplates } from '../core/community-discovery.js';
+import { resolveTemplateAsync } from '../core/template-resolver.js';
+import { discoverTemplates } from '../adapters/template-discovery.js';
+import { discoverCommunityTemplates } from '../adapters/community-discovery.js';
 import { createProject } from '../adapters/project.js';
 
 /**
@@ -16,9 +17,9 @@ export async function createHandler(name: string, options: CreateOptions): Promi
   const type = options.plugin ? 'plugin' : 'theme';
   const argValue = options.plugin || options.theme || '';
 
-  let template = resolveTemplate();
+  let template = await resolveTemplateAsync(argValue, type, discoverTemplates);
   if (!template) {
-    const communityTemplates = discoverCommunityTemplates();
+    const communityTemplates = await discoverCommunityTemplates(type);
     template = communityTemplates.find(
       (t) => t.type === type && [argValue, `obsidian-template-${argValue}`].includes(t.args),
     );
