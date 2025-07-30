@@ -1,0 +1,32 @@
+---
+title: Testing
+---
+
+# Testing
+
+Rhyolite uses modern testing tools to ensure code quality and reliability across all packages.
+
+## How to Run Tests
+
+Run all tests in the monorepo:
+
+```sh
+pnpm test
+```
+
+Run tests for a specific package:
+
+```sh
+pnpm --filter <package> test
+```
+
+## Writing Tests
+
+- Use your preferred test framework (e.g., Vitest, Jest)
+- Place tests in a `__tests__` or `tests/` directory
+- Write clear, focused test cases
+
+## Best Practices
+
+- Keep tests fast and isolated
+- Use CI to run tests on every PR

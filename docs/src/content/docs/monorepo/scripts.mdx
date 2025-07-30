@@ -1,0 +1,26 @@
+---
+title: Workspace Scripts
+---
+
+# Workspace Scripts
+
+Rhyolite’s monorepo comes with powerful workspace scripts for building, testing, and automating your workflow.
+
+## Common Scripts
+
+- `pnpm build` — Build all packages
+- `pnpm test` — Run all tests
+- `pnpm lint` — Lint all code
+- `pnpm format` — Format code with Prettier
+
+## Filtering
+
+Run scripts for a specific package:
+
+```sh
+pnpm --filter <package> build
+```
+
+## Custom Scripts
+
+Add new scripts to the root `package.json` or to individual packages as needed.

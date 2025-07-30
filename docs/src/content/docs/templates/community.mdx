@@ -1,0 +1,29 @@
+---
+title: Community Templates
+---
+
+# Community Templates
+
+Rhyolite supports a growing ecosystem of community-contributed templates for plugins and themes.
+
+## Using Community Templates
+
+List available community templates with:
+
+```sh
+pnpm exec create-rhyolite --list
+```
+
+Use a community template by name:
+
+```sh
+pnpm create rhyolite@latest my-plugin -- --plugin community-template-name
+```
+
+## Contributing a Template
+
+1. Fork the repo
+2. Add your template to `packages/plugin/community/` or `packages/themes/community/`
+3. Submit a pull request with a README and example
+
+Your template will be available to all Rhyolite users!

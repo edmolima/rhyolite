@@ -1,0 +1,34 @@
+---
+title: Automated Publishing
+---
+
+# Automated Publishing
+
+Rhyolite automates npm publishing so you can focus on building, not manual releases.
+
+## How It Works
+
+- **Versioning:** Bump your package version in `package.json`.
+- **Tagging:** Push a git tag (e.g., `v1.2.3`).
+- **CI/CD:** The publish workflow runs on new tags, builds the package, and publishes to npm using a secure token.
+
+## Steps to Publish
+
+1. Update your package version:
+   ```sh
+   pnpm version patch # or minor/major
+   git push --follow-tags
+   ```
+2. CI/CD will publish to npm automatically.
+
+## Security
+
+- The npm token is stored as a GitHub Actions secret (`NPM_TOKEN`).
+- Only trusted maintainers have publish rights.
+
+## Troubleshooting
+
+- Check the Actions tab for publish errors.
+- Ensure your package is public and has a valid `name` and `version`.
+
+For more, see [CI/CD Best Practices](./best-practices).

@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.2",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "starlight-theme-rapide": "^0.5.1"
   },
   "devDependencies": {
     "astro": "^5.12.5"

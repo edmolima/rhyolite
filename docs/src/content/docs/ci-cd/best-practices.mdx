@@ -1,0 +1,37 @@
+---
+title: CI/CD Best Practices
+---
+
+# CI/CD Best Practices
+
+Follow these best practices to keep your Rhyolite project fast, reliable, and easy to maintain:
+
+## 1. Keep Workflows Fast
+
+- Use caching for dependencies.
+- Run tests and builds in parallel where possible.
+
+## 2. Automate Everything
+
+- Automate tests, linting, builds, and deploys.
+- Use semantic versioning and automated changelogs.
+
+## 3. Secure Your Secrets
+
+- Store tokens (like `NPM_TOKEN`) in GitHub Secrets.
+- Never commit secrets to the repo.
+
+## 4. Review All PRs
+
+- Require reviews and CI passing before merging.
+
+## 5. Monitor Deployments
+
+- Check the Actions tab for failed jobs.
+- Set up notifications for failed deploys.
+
+## 6. Document Your Workflows
+
+- Keep `.github/workflows/` up to date and well-commented.
+
+For more, see [Docs Deployment](./docs) and [Automated Publishing](./publishing).

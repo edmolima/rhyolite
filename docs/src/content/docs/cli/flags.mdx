@@ -1,0 +1,33 @@
+---
+title: CLI Flags & Options
+---
+
+# CLI Flags & Options
+
+The Rhyolite CLI supports a variety of flags and options to customize your workflow. Here’s a reference for the most important ones:
+
+## Global Flags
+
+- `--help` — Show help and usage information
+- `--version` — Print the CLI version
+
+## Plugin/Theme Creation
+
+- `--plugin <template>` — Scaffold a new plugin from a template (e.g., `react`, `vue`, `svelte`)
+- `--theme <template>` — Scaffold a new theme from a template (e.g., `minimal`, `dark`)
+- `--list` — List all available templates
+
+## Advanced
+
+- `--dry-run` — Preview changes without writing files
+- `--force` — Overwrite existing files without prompting
+
+## Environment Variables
+
+- `RHYO_ENV` — Set the environment (e.g., `development`, `production`)
+
+For more, run:
+
+```sh
+pnpm exec create-rhyolite --help
+```

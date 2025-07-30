@@ -1,0 +1,31 @@
+---
+title: Adding Packages
+---
+
+# Adding Packages
+
+Add new plugins, themes, or utilities to the Rhyolite monorepo in a few steps:
+
+## 1. Create a New Package
+
+- Add a new folder under `packages/` (e.g., `packages/my-new-plugin`)
+- Scaffold with your preferred template or start from scratch
+
+## 2. Update Workspace Config
+
+- Add your new package path to `pnpm-workspace.yaml`
+
+## 3. Install & Build
+
+```sh
+pnpm install
+pnpm build
+```
+
+## 4. Test & Document
+
+- Add tests and a README to your new package
+
+## 5. (Optional) Publish
+
+- See [Automated Publishing](../ci-cd/publishing) for details

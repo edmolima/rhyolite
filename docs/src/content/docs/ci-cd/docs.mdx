@@ -1,0 +1,42 @@
+---
+title: Docs Deployment
+---
+
+# Docs Deployment
+
+Rhyolite documentation is built with [Astro](https://astro.build/) and deployed automatically to GitHub Pages using GitHub Actions. This ensures your docs are always up-to-date and accessible for users and contributors.
+
+## How It Works
+
+- **Build:** On every push to `main`, the docs are built using Astro’s static site generator.
+- **Deploy:** The built site is deployed to the `gh-pages` branch via GitHub Actions.
+- **Live Preview:** Preview your docs locally with `pnpm dev` in the `docs` folder.
+
+## Local Development
+
+```sh
+cd docs
+pnpm install
+pnpm dev
+```
+
+## Continuous Deployment
+
+The workflow file `.github/workflows/docs.yml` automates the build and deploy process. It uses [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) for reliable deployment.
+
+**Key steps:**
+
+1. Install dependencies
+2. Build the docs
+3. Deploy to GitHub Pages
+
+## Custom Domains
+
+To use a custom domain, add a `CNAME` file to `docs/public/` with your domain name.
+
+## Troubleshooting
+
+- If your docs do not update, check the Actions tab for workflow errors.
+- Ensure the `site` and `base` in `astro.config.mjs` match your GitHub Pages URL.
+
+For more, see [CI/CD Best Practices](./best-practices).

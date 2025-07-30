@@ -1,0 +1,30 @@
+---
+title: CLI Overview
+---
+
+# CLI Overview
+
+The Rhyolite CLI is your all-in-one tool for scaffolding, developing, and managing Obsidian plugins and themes. It’s designed for speed, safety, and a great developer experience.
+
+## Key Features
+
+- **Project scaffolding** for plugins and themes
+- **Template selection** (official and community)
+- **Type-safe config and prompts**
+- **Strict linting and testing**
+
+## Common Commands
+
+```sh
+pnpm create rhyolite@latest my-plugin -- --plugin react
+pnpm create rhyolite@latest my-theme -- --theme minimal
+pnpm exec create-rhyolite --help
+```
+
+## Flags & Options
+
+- `--plugin <template>`: Scaffold a new plugin
+- `--theme <template>`: Scaffold a new theme
+- `--list`: List available templates
+
+See [Flags & Options](./flags) and [Advanced Usage](./advanced) for more.

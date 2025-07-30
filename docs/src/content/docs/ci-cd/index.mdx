@@ -1,0 +1,30 @@
+---
+title: CI/CD & Publishing
+---
+
+# CI/CD & Publishing
+
+Rhyolite uses modern CI/CD pipelines to automate testing, building, and publishing for both code and documentation. This ensures every change is validated and shipped with confidence.
+
+## What’s Automated?
+
+- **Tests:** All PRs and pushes run the full test suite.
+- **Linting:** Code is linted for style and quality.
+- **Builds:** Packages and docs are built in clean environments.
+- **Publishing:** Releases are published to npm and docs are deployed to GitHub Pages.
+
+## How to Use
+
+1. Push or open a PR—CI runs automatically.
+2. Merge to `main`—triggers publish and deploy workflows.
+3. Check the Actions tab for status and logs.
+
+## Customization
+
+Workflows are defined in `.github/workflows/`. You can extend or tweak them for your team’s needs.
+
+## Learn More
+
+- [Docs Deployment](./docs)
+- [Automated Publishing](./publishing)
+- [CI/CD Best Practices](./best-practices)

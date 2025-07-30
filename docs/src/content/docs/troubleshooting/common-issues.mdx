@@ -1,0 +1,25 @@
+---
+title: Common Issues
+---
+
+# Common Issues
+
+Here are solutions to the most common problems Rhyolite users encounter:
+
+## 404 on GitHub Pages
+
+- **Solution:** Set the correct `site` and `base` in `astro.config.mjs`.
+
+## CLI Not Found
+
+- **Solution:** Make sure you’re using `pnpm create rhyolite@latest` and have Node.js v18+ and pnpm installed.
+
+## Build Fails
+
+- **Solution:** Run `pnpm install` to ensure all dependencies are present. Check for typos in your config files.
+
+## Template Not Listed
+
+- **Solution:** Run `pnpm exec create-rhyolite --list` to see all available templates. Add new templates to the correct directory and update `pnpm-workspace.yaml`.
+
+If you’re still stuck, see [Community Support](./community).

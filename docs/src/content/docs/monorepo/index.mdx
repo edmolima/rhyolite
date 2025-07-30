@@ -1,0 +1,29 @@
+---
+title: Monorepo Structure
+---
+
+# Monorepo Structure
+
+Rhyolite uses a modern pnpm monorepo for a seamless developer experience and easy extensibility.
+
+## Layout
+
+- `packages/create-rhyolite` — The CLI tool
+- `packages/plugin` — Official plugin templates
+- `packages/themes` — Official theme templates
+- `packages/.../community` — Community templates
+
+## Why a Monorepo?
+
+- **Unified tooling** — One place for all scripts, tests, and configs
+- **Easy dependency management** — Share code and lock versions
+- **Faster onboarding** — One install, everything works
+
+## Getting Started
+
+```sh
+pnpm install
+pnpm build
+```
+
+See [Adding Packages](./adding-packages) and [Workspace Scripts](./scripts) for more.

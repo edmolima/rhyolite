@@ -1,0 +1,32 @@
+---
+title: Real-world Workflows
+---
+
+# Real-world Workflows
+
+Rhyolite is built for automation and real-world developer workflows. Here are some examples to help you get the most out of your toolkit:
+
+## Example: Scaffold, Build, and Test
+
+```sh
+pnpm create rhyolite@latest my-plugin -- --plugin react
+cd my-plugin
+pnpm install
+pnpm build
+pnpm test
+```
+
+## Example: Add a New Template
+
+1. Fork the repo and add your template to `packages/plugin/community/`
+2. Update `pnpm-workspace.yaml`
+3. Submit a pull request
+
+## Example: Automate CI/CD
+
+- Use GitHub Actions to run tests, lint, and deploy docs on every push
+- See `.github/workflows/` for ready-to-use workflows
+
+## More
+
+Check the rest of the docs for more advanced scenarios and tips!
