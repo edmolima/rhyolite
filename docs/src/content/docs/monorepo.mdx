@@ -1,0 +1,34 @@
+---
+title: 'Monorepo Guide'
+sidebar_label: 'Monorepo'
+---
+
+# Monorepo Guide
+
+Rhyolite uses a modern pnpm monorepo for best-in-class developer experience.
+
+## Structure
+
+- `packages/create-rhyolite`: CLI tool
+- `packages/plugin`: Official plugin templates
+- `packages/themes`: Official theme templates
+- `packages/.../community`: Community templates
+
+## Workspace Scripts
+
+- `pnpm build`: Build all packages
+- `pnpm test`: Run all tests
+- `pnpm lint`: Lint all code
+
+## Adding Packages
+
+Add new packages or templates under `packages/` and update `pnpm-workspace.yaml`.
+
+## Local Development
+
+```sh
+pnpm install
+pnpm build
+```
+
+See [Contributing](./contributing) for more.

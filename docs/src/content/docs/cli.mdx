@@ -1,0 +1,33 @@
+---
+title: 'CLI Reference'
+sidebar_label: 'CLI'
+---
+
+# CLI Reference
+
+Rhyolite provides a powerful CLI to scaffold, develop, and manage Obsidian plugins and themes.
+
+## Usage
+
+```sh
+pnpm exec create-rhyolite --help
+```
+
+## Common Commands
+
+- `--plugin <template>`: Scaffold a new plugin from a template
+- `--theme <template>`: Scaffold a new theme from a template
+- `--list`: List available templates
+- `--help`: Show help and usage
+
+## Examples
+
+```sh
+# Create a plugin with React template
+npm create rhyolite@latest my-plugin -- --plugin react
+
+# Create a theme with Vue template
+npm create rhyolite@latest my-theme -- --theme vue
+```
+
+See [Getting Started](./intro/getting-started) for more details.

@@ -13,15 +13,18 @@ export default defineConfig({
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
       sidebar: [
         {
-          label: 'Guides',
+          label: 'Docs',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
+            { label: 'Home', slug: 'index' },
+            { label: 'Getting Started', slug: 'intro/getting-started' },
+            { label: 'CLI Reference', slug: 'cli' },
+            { label: 'Monorepo Guide', slug: 'monorepo' },
+            { label: 'Packages & Templates', slug: 'packages' },
+            { label: 'Contributing', slug: 'contributing' },
+            { label: 'CI/CD & Publishing', slug: 'ci-cd' },
+            { label: 'FAQ', slug: 'faq' },
+            { label: 'Advanced', slug: 'advanced' },
           ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
         },
       ],
     }),

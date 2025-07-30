@@ -1,0 +1,25 @@
+---
+title: 'CI/CD & Publishing'
+sidebar_label: 'CI/CD'
+---
+
+# CI/CD & Publishing
+
+Rhyolite uses GitHub Actions for automated testing and publishing.
+
+## Publishing to npm
+
+- On every new version tag, the CLI is published to npm automatically.
+- See `.github/workflows/publish.yml` for details.
+
+## Docs Deployment
+
+- Docs are built and deployed to GitHub Pages on every push to `main`.
+- See `.github/workflows/docs.yml` for details.
+
+## Best Practices
+
+- Use feature branches and PRs for all changes
+- Ensure all tests and builds pass before merging
+
+See [Contributing](./contributing) for more.
