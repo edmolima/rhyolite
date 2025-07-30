@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build projects app
+      - name: Build docs app
         run: pnpm run --filter docs build
 
       - name: Setup Pages
