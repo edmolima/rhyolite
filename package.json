@@ -1,6 +1,6 @@
 {
   "name": "rhyolite",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Creating next generation obsidian plugins and themes.",
   "main": "index.js",
   "repository": {
